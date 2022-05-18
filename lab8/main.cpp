@@ -1,56 +1,46 @@
 #include <iostream>
 #include <vector>
 
-#include "AvgValue.cpp"
-#include "coordinates.h"
+template<typename T>
+std::vector<T> AvgValue(std::vector<std::vector<T> > vec){
+    std::vector <T> avg={0,0};
+    for(auto& row:vec){
+       int i =0;
+       for(auto& col:row){
+         avg[i]+=col;
+         i++;
+       }
+    }
+    for(int i=0;i<vec.size()-1;i++){
+        avg[i]=  avg[i]/vec[i].size();
+        std::cout<<avg[i];
+        if(i<vec.size()-2) std::cout<<",";
+    }
+    std::cout<<std::endl;
+    return avg;
+}
+
 
 using namespace std;
 
 int main()
 {
-    //Пример float
-    std::vector<float> vect;
-
-    vect.push_back(1.2);
-    vect.push_back(2.2);
-    vect.push_back(3.3);
-    vect.push_back(4.5);
-    vect.push_back(5.0);
-    vect.push_back(6.9);
-
-    float avg = AvgValue(vect);
-    cout<<avg<<endl;
-
-    //Пример Int
-    std::vector<int> vect_int;
-
-    vect_int.push_back(1);
-    vect_int.push_back(2);
-    vect_int.push_back(3);
-    vect_int.push_back(4);
-    vect_int.push_back(5);
-    vect_int.push_back(6);
-
-    int avg_int = AvgValue(vect);
-    cout<<avg_int<<endl;
 
 
 
     //Пример Int
-    int x = 1;
-    int y = 2;
+    std::vector<vector<int>> vect_int;
+    vector <int> a = {1,2};
+    vect_int.push_back( a );
+    vector <int> b = {3,5};
+    vect_int.push_back( b );
+    vector <int> c = {4,2};
+    vect_int.push_back( c );
 
-    Coordinates<int> cor(x, y);
 
-    cor.type();
+    vector<int> avg_int = AvgValue(vect_int);
 
 
-    //Пример float
-    float x_f = 1.1;
-    float y_f = 2.1;
 
-    Coordinates<float> cor_f(x_f, y_f);
-    cor_f.type();
 
-    return 0;
 }
