@@ -1,0 +1,27 @@
+#ifndef JSONREADER_H
+#define JSONREADER_H
+
+#include "abstractreader.h"
+#include <fstream>
+#include <json.hpp>
+
+
+class JsonReader : public AbstractReader
+{
+    std::ifstream fin;
+
+public:
+    JsonReader(const QString& filename);
+    ~JsonReader();
+    virtual bool is_open() const {return fin.is_open(); };
+    virtual AbstractReader& operator>> (Car &car);
+
+    virtual operator bool (){
+        return this->is_open();
+    }
+private:
+    int index = 0;
+    nlohmann::json json;
+};
+
+#endif // JSONREADER_H

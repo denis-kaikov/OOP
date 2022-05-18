@@ -1,0 +1,5 @@
+[
+  {"n": 0, "model": "opel", "color": 1, "year": 1984},
+  {"n": 1, "model": "train", "color": 3, "year": 1337},
+  {"n": 2, "model": "cj", "color": 2, "year": 228}
+]
