@@ -3,7 +3,12 @@
 
 template<typename T>
 std::vector<T> AvgValue(std::vector<std::vector<T> > vec){
-    std::vector <T> avg={0,0};
+    std::vector <T> avg;
+    for(int i=0;i<vec[0].size();i++){
+        avg.push_back(0);
+    }
+
+
     for(auto& row:vec){
        int i =0;
        for(auto& col:row){
@@ -11,10 +16,10 @@ std::vector<T> AvgValue(std::vector<std::vector<T> > vec){
          i++;
        }
     }
-    for(int i=0;i<vec.size()-1;i++){
-        avg[i]=  avg[i]/vec[i].size();
+    for(int i=0;i<vec[0].size();i++){
+        avg[i]=  avg[i]/vec.size();
         std::cout<<avg[i];
-        if(i<vec.size()-2) std::cout<<",";
+        if(i<vec[0].size()-1) std::cout<<",";
     }
     std::cout<<std::endl;
     return avg;
@@ -28,17 +33,17 @@ int main()
 
 
 
-    //Пример Int
-    std::vector<vector<int>> vect_int;
-    vector <int> a = {1,2};
+    //Пример double
+    std::vector<vector<double>> vect_int;
+    vector <double> a = {1,8};
     vect_int.push_back( a );
-    vector <int> b = {3,5};
+    vector <double> b = {3,10};
     vect_int.push_back( b );
-    vector <int> c = {4,2};
+    vector <double> c = {4,15};
     vect_int.push_back( c );
 
 
-    vector<int> avg_int = AvgValue(vect_int);
+    vector<double> avg_int = AvgValue(vect_int);
 
 
 
